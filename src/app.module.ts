@@ -6,6 +6,9 @@ import AppConfig, { IAppConfig } from '../config/app.config';
 import MongoConfig, { IMongoConfig } from '../config/mongo.config';
 import { LevelModule } from './modules/level/level.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './modules/auth/auth.module';
+import { AuthController } from './modules/auth/auth.controller';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -34,8 +37,9 @@ import { MongooseModule } from '@nestjs/mongoose';
       },
     }),
     LevelModule,
+    AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AuthController],
+  providers: [AppService, JwtService],
 })
 export class AppModule {}

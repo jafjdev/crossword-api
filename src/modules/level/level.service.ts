@@ -3,6 +3,7 @@ import { Level } from './level.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateLevelDto, CreateLevelsDto } from './dto/create-level-dto';
+import { QueryLevelDto } from './dto/query-level-dto';
 
 @Injectable()
 export class LevelService {
@@ -15,14 +16,17 @@ export class LevelService {
     await this.mongooseModel.create(level);
   }
 
-  async createLevels(levels: CreateLevelsDto): Promise<void> {
+  async createLevels(levels: CreateLevelDto[]): Promise<void> {
     await this.mongooseModel.create(levels);
   }
 
-  async findAll(page = 1, limit = 10): Promise<Level[]> {
+  async findAll(queryLevelsDto: QueryLevelDto): Promise<Level[]> {
+    const { limit, page, sort, sortBy } = queryLevelsDto;
+
     return this.mongooseModel
       .find()
       .limit(limit)
+      .sort({ [sortBy]: sort })
       .skip((page - 1) * limit)
       .exec();
   }
