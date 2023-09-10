@@ -17,7 +17,6 @@ export class LevelController {
   constructor(private readonly levelService: LevelService) {}
   @Post('bulk')
   createStructures(@Body() levelsDto: CreateLevelDto[]) {
-    console.log(levelsDto);
     this.levelService.createLevels(levelsDto);
     return 'ok';
   }

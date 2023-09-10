@@ -3,15 +3,20 @@ import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
-import * as process from 'process';
-
+import { ConfigService } from '@nestjs/config';
 @Module({
   imports: [
     PassportModule,
-    JwtModule.register({
-      global: true,
-      secret: process.env.JWT_KEY,
-      signOptions: { expiresIn: '60m' },
+    JwtModule.registerAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => {
+        return {
+          secret: config.get<string>('JWT_KEY'),
+          signOptions: {
+            expiresIn: config.get<string>('JWT_EXPIRATION_TIME'),
+          },
+        };
+      },
     }),
   ],
   providers: [AuthService],
