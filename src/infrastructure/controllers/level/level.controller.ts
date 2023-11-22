@@ -8,8 +8,8 @@ import {
   Query,
 } from '@nestjs/common';
 import { CreateLevelDto, CreateLevelsDto } from './dto/create-level-dto';
-import { LevelService } from './level.service';
-import { Level } from './level.entity';
+import { LevelService } from '../../repositories/level/level.service';
+import { Level } from '../../entities/level.entity';
 import { QueryLevelDto } from './dto/query-level-dto';
 
 @Controller('level')

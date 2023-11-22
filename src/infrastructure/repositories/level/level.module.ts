@@ -1,7 +1,11 @@
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
-import { Level, LEVELS_COLLECTION, LevelSchema } from './level.entity';
-import { LevelController } from './level.controller';
+import {
+  Level,
+  LEVELS_COLLECTION,
+  LevelSchema,
+} from '../../entities/level.entity';
+import { LevelController } from '../../controllers/level/level.controller';
 import { LevelService } from './level.service';
 
 @Module({

@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import AppConfig, { IAppConfig } from '../config/app.config';
 import MongoConfig, { IMongoConfig } from '../config/mongo.config';
-import { LevelModule } from './modules/level/level.module';
+import { LevelModule } from './infrastructure/repositories/level/level.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from './modules/auth/auth.module';
-import { AuthController } from './modules/auth/auth.controller';
+import { AuthModule } from './infrastructure/repositories/user/auth.module';
+import { AuthController } from './infrastructure/controllers/user/auth.controller';
 import { JwtService } from '@nestjs/jwt';
 
 @Module({
@@ -39,7 +37,7 @@ import { JwtService } from '@nestjs/jwt';
     LevelModule,
     AuthModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, JwtService],
+  controllers: [AuthController],
+  providers: [JwtService],
 })
 export class AppModule {}

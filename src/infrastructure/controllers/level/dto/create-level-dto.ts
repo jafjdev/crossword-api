@@ -6,7 +6,7 @@ import {
   IsNumber,
   IsString,
 } from 'class-validator';
-import { IsNotZero } from '../../../decorators/IsNotZero';
+import { IsNotZero } from '../../../../decorators/IsNotZero';
 import { ApiProperty } from '@nestjs/swagger';
 
 class Letter {

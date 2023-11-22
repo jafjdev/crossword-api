@@ -1,8 +1,8 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsEnum, IsNumber, IsOptional, Min } from 'class-validator';
-import { PaginatedResponseSortEnum } from '../../../helpers/utils';
-import { Level } from '../level.entity';
+import { PaginatedResponseSortEnum } from '../../../../helpers/utils';
+import { Level } from '../../../entities/level.entity';
 
 export class QueryLevelDto extends PartialType(Level) {
   @ApiProperty({
