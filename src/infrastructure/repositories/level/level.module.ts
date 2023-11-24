@@ -7,9 +7,16 @@ import {
 } from '../../entities/level.entity';
 import { LevelController } from '../../controllers/level/level.controller';
 import { LevelService } from './level.service';
+import { CreateLevelUseCase } from '../../../usecases/level/createLevel.usecase';
+import { LoggerService } from '../../logger/logger.service';
+import { LoggerModule } from '../../logger/logger.module';
+import { DeleteLevelUseCase } from '../../../usecases/level/deleteLevel.usecase';
+import { GetLevelUseCase } from '../../../usecases/level/getLevel.usecase';
+import { GetLevelsUseCase } from '../../../usecases/level/getLevels.usecase';
 
 @Module({
   imports: [
+    LoggerModule,
     MongooseModule.forFeature([
       {
         collection: LEVELS_COLLECTION,
@@ -19,7 +26,21 @@ import { LevelService } from './level.service';
     ]),
   ],
   controllers: [LevelController],
-  providers: [LevelService],
-  exports: [LevelService],
+  providers: [
+    LevelService,
+    CreateLevelUseCase,
+    DeleteLevelUseCase,
+    GetLevelUseCase,
+    GetLevelsUseCase,
+    LoggerService,
+  ],
+  exports: [
+    LevelService,
+    CreateLevelUseCase,
+    DeleteLevelUseCase,
+    GetLevelUseCase,
+    GetLevelsUseCase,
+    LoggerService,
+  ],
 })
 export class LevelModule {}

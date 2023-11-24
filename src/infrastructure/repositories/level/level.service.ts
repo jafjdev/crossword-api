@@ -2,10 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Level } from '../../entities/level.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import {
-  CreateLevelDto,
-  CreateLevelsDto,
-} from '../../controllers/level/dto/create-level-dto';
+import { CreateLevelDto } from '../../controllers/level/dto/create-level-dto';
 import { QueryLevelDto } from '../../controllers/level/dto/query-level-dto';
 import { LevelRepository } from '../../../domain/repositories/level.repository';
 
