@@ -1,28 +1,19 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import * as mongooseDelete from 'mongoose-delete';
-
-@Schema()
-export class Letter {
-  @Prop()
-  x: number;
-
-  @Prop()
-  y: number;
-
-  @Prop()
-  letter: string;
-}
-
-export const LetterSchema = SchemaFactory.createForClass(Letter);
-
 @Schema()
 export class Word {
   @Prop()
-  word: string;
+  start: number[];
 
-  @Prop({ type: [LetterSchema] })
-  letters: Letter[];
+  @Prop()
+  length: number;
+
+  @Prop()
+  type: string;
+
+  @Prop()
+  occupied_by: string[];
 }
 
 export const WordSchema = SchemaFactory.createForClass(Word);

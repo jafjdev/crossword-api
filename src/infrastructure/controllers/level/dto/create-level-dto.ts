@@ -2,37 +2,27 @@ import {
   IsArray,
   IsInt,
   IsNotEmpty,
-  IsNotIn,
   IsNumber,
   IsString,
 } from 'class-validator';
 import { IsNotZero } from '../../../../decorators/IsNotZero';
 import { ApiProperty } from '@nestjs/swagger';
-
-class Letter {
-  @IsNumber()
-  @IsInt()
-  @ApiProperty()
-  readonly x: number;
-  @IsNumber()
-  @IsInt()
-  @ApiProperty()
-  readonly y: number;
-  @IsString()
-  @IsNotEmpty()
-  @IsNotIn([' ', '\n'])
-  @ApiProperty()
-  readonly letter: string;
-}
-
 class Word {
+  @IsArray()
+  @IsNotEmpty()
+  readonly start: number[];
+  @IsNumber()
+  @IsInt()
+  @IsNotZero()
+  @ApiProperty()
+  length: number;
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-  readonly word: string;
+  type: string;
   @IsArray()
-  @ApiProperty({ type: [Letter] })
-  readonly letters: Letter[];
+  @IsNotEmpty()
+  occupied_by: string[];
 }
 
 export class CreateLevelDto {

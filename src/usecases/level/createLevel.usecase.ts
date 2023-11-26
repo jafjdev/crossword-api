@@ -1,6 +1,9 @@
 import { ILogger } from '../../domain/logger/logger.interface';
 import { LevelService } from '../../infrastructure/repositories/level/level.service';
-import { CreateLevelDto } from '../../infrastructure/controllers/level/dto/create-level-dto';
+import {
+  CreateLevelDto,
+  CreateLevelsDto,
+} from '../../infrastructure/controllers/level/dto/create-level-dto';
 import { Inject } from '@nestjs/common';
 
 export class CreateLevelUseCase {

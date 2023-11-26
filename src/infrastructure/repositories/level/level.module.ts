@@ -13,9 +13,13 @@ import { LoggerModule } from '../../logger/logger.module';
 import { DeleteLevelUseCase } from '../../../usecases/level/deleteLevel.usecase';
 import { GetLevelUseCase } from '../../../usecases/level/getLevel.usecase';
 import { GetLevelsUseCase } from '../../../usecases/level/getLevels.usecase';
+import { LocalStrategy } from '../../strategies/local.strategy';
+import { AuthModule } from '../user/auth.module';
+import { CreateLevelsUseCase } from '../../../usecases/level/createLevels.usecase';
 
 @Module({
   imports: [
+    AuthModule,
     LoggerModule,
     MongooseModule.forFeature([
       {
@@ -29,18 +33,22 @@ import { GetLevelsUseCase } from '../../../usecases/level/getLevels.usecase';
   providers: [
     LevelService,
     CreateLevelUseCase,
+    CreateLevelsUseCase,
     DeleteLevelUseCase,
     GetLevelUseCase,
     GetLevelsUseCase,
     LoggerService,
+    LocalStrategy,
   ],
   exports: [
     LevelService,
     CreateLevelUseCase,
+    CreateLevelsUseCase,
     DeleteLevelUseCase,
     GetLevelUseCase,
     GetLevelsUseCase,
     LoggerService,
+    LocalStrategy,
   ],
 })
 export class LevelModule {}
