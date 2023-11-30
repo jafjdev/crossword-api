@@ -4,7 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthController } from '../../controllers/user/auth.controller';
 import { ConfigService } from '@nestjs/config';
-import { LocalStrategy } from '../../strategies/local.strategy';
+import { JwtStrategy } from '../../strategies/jwt.strategy';
 import { LoggerService } from '../../logger/logger.service';
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { LoggerService } from '../../logger/logger.service';
       },
     }),
   ],
-  providers: [AuthService, LocalStrategy, LoggerService],
+  providers: [AuthService, JwtStrategy, LoggerService],
   controllers: [AuthController],
   exports: [AuthService],
 })

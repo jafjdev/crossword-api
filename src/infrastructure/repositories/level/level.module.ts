@@ -13,7 +13,7 @@ import { LoggerModule } from '../../logger/logger.module';
 import { DeleteLevelUseCase } from '../../../usecases/level/deleteLevel.usecase';
 import { GetLevelUseCase } from '../../../usecases/level/getLevel.usecase';
 import { GetLevelsUseCase } from '../../../usecases/level/getLevels.usecase';
-import { LocalStrategy } from '../../strategies/local.strategy';
+import { JwtStrategy } from '../../strategies/jwt.strategy';
 import { AuthModule } from '../user/auth.module';
 import { CreateLevelsUseCase } from '../../../usecases/level/createLevels.usecase';
 
@@ -38,7 +38,7 @@ import { CreateLevelsUseCase } from '../../../usecases/level/createLevels.usecas
     GetLevelUseCase,
     GetLevelsUseCase,
     LoggerService,
-    LocalStrategy,
+    JwtStrategy,
   ],
   exports: [
     LevelService,
@@ -48,7 +48,7 @@ import { CreateLevelsUseCase } from '../../../usecases/level/createLevels.usecas
     GetLevelUseCase,
     GetLevelsUseCase,
     LoggerService,
-    LocalStrategy,
+    JwtStrategy,
   ],
 })
 export class LevelModule {}
